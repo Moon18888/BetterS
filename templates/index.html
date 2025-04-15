@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Incidencias</h1>
+    <a class="btn btn-primary mb-3" href="{{ url_for('create') }}">Nueva Incidencia</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th><th>Fecha</th><th>Descripción</th><th>Usuario</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in incidencias %}
+            <tr>
+                <td>{{ i.id_incidencia }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.short_description }}</td>
+                <td>{{ i.id_usuario }}</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="{{ url_for('edit', id=i.id_incidencia) }}">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="{{ url_for('delete', id=i.id_incidencia) }}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

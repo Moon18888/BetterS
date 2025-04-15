@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>{{ accion }} Incidencia</h2>
+    <form method="POST">
+        <div class="mb-2"><input class="form-control" type="date" name="date" value="{{ incidencia.date if incidencia else '' }}" required></div>
+        <div class="mb-2"><input class="form-control" type="number" name="id_status" placeholder="ID Status" value="{{ incidencia.id_status if incidencia else '' }}"></div>
+        <div class="mb-2"><input class="form-control" type="text" name="short_description" placeholder="Descripción corta" value="{{ incidencia.short_description if incidencia else '' }}"></div>
+        <div class="mb-2"><textarea class="form-control" name="description" placeholder="Descripción completa">{{ incidencia.description if incidencia else '' }}</textarea></div>
+        <div class="mb-2"><input class="form-control" type="number" name="id_usuario" placeholder="ID Usuario" value="{{ incidencia.id_usuario if incidencia else '' }}"></div>
+        <div class="mb-2"><input class="form-control" type="number" name="id_urgency" placeholder="Urgencia" value="{{ incidencia.id_urgency if incidencia else '' }}"></div>
+        <div class="mb-2"><input class="form-control" type="number" name="id_impact" placeholder="Impacto" value="{{ incidencia.id_impact if incidencia else '' }}"></div>
+        <div class="mb-2"><input class="form-control" type="number" name="id_prioridad" placeholder="Prioridad" value="{{ incidencia.id_prioridad if incidencia else '' }}"></div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancelar</a>
+    </form>
+{% endblock %}
